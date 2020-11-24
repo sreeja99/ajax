@@ -24,8 +24,8 @@
         <div id="post_services"></div>
         <script>
             const getElem = document.querySelector("#get_services");
-            const getURL = "http://localhost:3000/employees/1";
-            makePromisecall("GET",getURL,true)
+            const getURL = "http://localhost:3000/EmployeesPayrollDB/1";
+            makeServicecall("GET",getURL,true)
                 .then(responseText => {
                     getElem.textContent = "Get User Data: "+responseText;
                 })
@@ -34,8 +34,8 @@
                 });
 
             const deleteElem = document.querySelector("#delete_services");
-            const deleteURL = "http://localhost:3000/employees/3";
-            makePromisecall("DELETE",deleteURL,false)
+            const deleteURL = "http://localhost:3000/EmployeesPayrollDB/3";
+            makeServicecall("DELETE",deleteURL,false)
                 .then(responseText => {
                     deleteElem.textContent = "Delete Data: "+responseText;
                 })
@@ -44,9 +44,20 @@
                 });
             
             const postElem = document.querySelector("#post_services");
-            const postURL = "http://localhost:3000/employees";
-            const emplData = {"name":"Harry","salary":"5000"};
-            makePromisecall("POST",postURL,true,emplData)
+            const postURL = "http://localhost:3000/EmployeesPayrollDB";
+            const empPayrollData = 
+                {
+                    _name: "Amarpa Shashanka Keerthi Kumar",
+                    _gender: "female",
+                    _department: [
+                        "Sales"
+                    ],
+                    _salary: "400000",
+                    _startDate: "29 Oct 2019",
+                    _note: "",
+                    _profilePic: "../assets/profile-images/Ellipse -1.png",
+                }
+            makeServicecall("POST",postURL,true,emplData)
                 .then(responseText => {
                     postElem.textContent = "New User Data: "+responseText;
                 })
